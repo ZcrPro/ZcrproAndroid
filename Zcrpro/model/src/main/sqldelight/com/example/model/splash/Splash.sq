@@ -1,0 +1,8 @@
+CREATE TABLE splash (
+  text TEXT NOT NULL,
+  img TEXT NOT NULL
+);
+
+select_all:
+SELECT *
+FROM splash;
