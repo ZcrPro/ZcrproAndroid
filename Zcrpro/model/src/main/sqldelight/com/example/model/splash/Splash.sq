@@ -1,4 +1,5 @@
 CREATE TABLE splash (
+  _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   text TEXT NOT NULL,
   img TEXT NOT NULL
 );
@@ -6,3 +7,8 @@ CREATE TABLE splash (
 select_all:
 SELECT *
 FROM splash;
+
+select_by_id:
+SELECT *
+FROM splash
+WHERE _id = ?;
