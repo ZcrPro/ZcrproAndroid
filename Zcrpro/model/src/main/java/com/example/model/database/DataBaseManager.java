@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.model.daily.Daily;
 import com.example.model.splash.Splash;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
@@ -33,6 +34,7 @@ public class DataBaseManager {
 
                         @Override
                         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
                         }
                     };
                     mSqlBrite = SqlBrite.create();
@@ -46,5 +48,6 @@ public class DataBaseManager {
 
     private static void init(SQLiteDatabase db) {
         db.execSQL(Splash.CREATE_TABLE);
+        db.execSQL(Daily.CREATE_TABLE);
     }
 }

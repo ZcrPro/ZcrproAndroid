@@ -1,0 +1,10 @@
+CREATE TABLE stories (
+  images TEXT NOT NULL,
+  type TEXT NOT NULL,
+  id TEXT NOT NULL,
+  title TEXT NOT NULL
+);
+
+select_all:
+SELECT *
+FROM stories;

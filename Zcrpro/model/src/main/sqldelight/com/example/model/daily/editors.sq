@@ -1,0 +1,11 @@
+CREATE TABLE editors (
+  url TEXT NOT NULL,
+  bio TEXT NOT NULL,
+  id TEXT NOT NULL,
+  avatar TEXT NOT NULL,
+  name TEXT NOT NULL
+);
+
+select_all:
+SELECT *
+FROM editors;

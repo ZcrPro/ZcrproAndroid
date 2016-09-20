@@ -1,0 +1,19 @@
+
+CREATE TABLE daily (
+  description TEXT NOT NULL,
+  background TEXT NOT NULL,
+  color TEXT NOT NULL,
+  name TEXT NOT NULL,
+  image TEXT NOT NULL,
+  image_source TEXT NOT NULL
+);
+
+select_all:
+SELECT *
+FROM daily;
+
+select_by_name:
+SELECT *
+FROM daily
+WHERE name = ?;
+
