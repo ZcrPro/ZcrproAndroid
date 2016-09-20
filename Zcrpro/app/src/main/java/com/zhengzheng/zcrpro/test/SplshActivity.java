@@ -1,4 +1,4 @@
-package com.zhengzheng.zcrpro;
+package com.zhengzheng.zcrpro.test;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import com.example.model.splash.api.SplashApi;
 import com.example.model.splash.api.SplashApiImple;
 import com.example.model.splash.dao.SplashDaoImpl;
 import com.example.model.utils.RxJavaUtils;
+import com.zhengzheng.zcrpro.BuildConfig;
+import com.zhengzheng.zcrpro.R;
 
 import rx.Observable;
 import rx.functions.Action1;
