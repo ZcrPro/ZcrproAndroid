@@ -72,7 +72,7 @@ public class DailyPresenter implements DailyContract.Presenter {
         if (showLoadingUI) {
             mDailyView.showLoadingUi(true);
         }
-        if (forceUpdate) {
+        if (!forceUpdate) {
             //从缓存中取
         }
 

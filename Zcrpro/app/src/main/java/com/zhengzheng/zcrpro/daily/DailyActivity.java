@@ -32,4 +32,11 @@ public class DailyActivity extends AppCompatActivity {
         mDailyPresenter = new DailyPresenter(this,dailyFragment, SchedulerProvider.getInstance());
 
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mDailyPresenter.unsubscribe();
+    }
 }
