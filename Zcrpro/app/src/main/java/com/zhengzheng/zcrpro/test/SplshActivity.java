@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.model.ApiFactory;
-import com.example.model.RetrofitFactory;
-import com.example.model.database.DataBaseManager;
-import com.example.model.service.BaseUrl;
-import com.example.model.service.SplashService;
+import com.example.model.base.ApiFactory;
+import com.example.model.base.RetrofitFactory;
+import com.example.model.base.database.DataBaseManager;
+import com.example.model.base.service.BaseUrl;
+import com.example.model.base.service.SplashService;
 import com.example.model.splash.Splash;
 import com.example.model.splash.api.SplashApi;
 import com.example.model.splash.api.SplashApiImple;
 import com.example.model.splash.dao.SplashDaoImpl;
-import com.example.model.utils.RxJavaUtils;
+import com.example.model.base.utils.RxJavaUtils;
 import com.zhengzheng.zcrpro.BuildConfig;
 import com.zhengzheng.zcrpro.R;
 

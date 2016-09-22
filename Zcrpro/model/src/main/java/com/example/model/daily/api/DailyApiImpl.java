@@ -2,7 +2,7 @@ package com.example.model.daily.api;
 
 import com.example.model.daily.Daily;
 import com.example.model.daily.dao.DailyDao;
-import com.example.model.service.DailyService;
+import com.example.model.base.service.DailyService;
 
 import rx.Observable;
 import rx.functions.Action1;

@@ -33,7 +33,7 @@ public class SignInUpActivity extends AppCompatActivity {
         }
 
         // Create the presenter
-        smsPresenter = new SmsPresenter(smsFragment, SchedulerProvider.getInstance());
+        smsPresenter = new SmsPresenter(this,smsFragment, SchedulerProvider.getInstance());
 
     }
 

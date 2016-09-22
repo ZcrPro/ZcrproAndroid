@@ -20,7 +20,7 @@ public interface SmsContract {
     }
 
     interface Presenter extends BasePresenter {
-        void loadSms();
+        void loadSms(String mobile);
     }
 
 }

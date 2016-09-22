@@ -1,6 +1,6 @@
 package com.example.model.splash.api;
 
-import com.example.model.service.SplashService;
+import com.example.model.base.service.SplashService;
 import com.example.model.splash.Splash;
 import com.example.model.splash.dao.SplashDao;
 

@@ -3,6 +3,7 @@ package com.zhengzheng.zcrpro.login.sms;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,10 +48,12 @@ public class SmsFragment extends Fragment implements SmsContract.View {
         ed_mobile = (EditText) root.findViewById(R.id.ed_mobile);
         btn_send_message = (Button) root.findViewById(R.id.btn_send_message);
 
+        ed_mobile.setText("13800138000");
         btn_send_message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.subscribe();
+                if (!TextUtils.isEmpty(ed_mobile.getText().toString().trim()))
+                    mPresenter.loadSms(ed_mobile.getText().toString().trim());
             }
         });
 
@@ -74,7 +77,7 @@ public class SmsFragment extends Fragment implements SmsContract.View {
 
     @Override
     public void success(String sms_code) {
-            tv_sms_code.setText(sms_code);
+            tv_sms_code.setText("服务器返回值:"+sms_code);
     }
 
     @Override

@@ -16,6 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    signingConfigs {
+        debug {
+            storeFile file(properties.getProperty('debug_key_file'))
+            storePassword properties.getProperty('debug_store_password')
+            keyAlias properties.getProperty('debug_store_key_alias')
+            keyPassword properties.getProperty('debug_store_key_password')
+        }
+    }
 }
 
 dependencies {
@@ -23,5 +35,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile project(':model')
-    compile project(':tools')
 }
