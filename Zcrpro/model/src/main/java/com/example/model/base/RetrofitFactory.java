@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.ryanharter.auto.value.gson.AutoValueGsonTypeAdapterFactory;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -35,10 +36,12 @@ public class RetrofitFactory {
                             .registerTypeAdapterFactory(new AutoValueGsonTypeAdapterFactory())
                             .create())); // 参考与GSON的结合
 
-            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(
-                    new HttpLoggingInterceptor()).build();
-
-            builder.client(client);
+                HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .addInterceptor(logging)
+                        .build();
+                builder.client(client);
 
             retrofit = builder.build();
         }

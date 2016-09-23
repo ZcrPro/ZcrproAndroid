@@ -2,6 +2,7 @@ package com.zhengzheng.zcrpro.login.sms;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.axinpay.sharedprefercence.Util;
 import com.example.model.base.ApiFactory;
@@ -45,11 +46,11 @@ public class SmsPresenter implements SmsContract.Presenter {
 
     private Secure mSecure;
 
-    public SmsPresenter(Context context,@NonNull SmsContract.View mSmsView, @NonNull BaseSchedulerProvider mSchedulerProvider) {
-        this.context=context;
+    public SmsPresenter(Context context, @NonNull SmsContract.View mSmsView, @NonNull BaseSchedulerProvider mSchedulerProvider) {
+        this.context = context;
         this.mSmsView = mSmsView;
         this.mSchedulerProvider = mSchedulerProvider;
-        context=checkNotNull(context);
+        context = checkNotNull(context);
         mSmsView = checkNotNull(mSmsView);
         mSchedulerProvider = checkNotNull(mSchedulerProvider);
         mSmsView.setPresenter(this);
@@ -84,26 +85,27 @@ public class SmsPresenter implements SmsContract.Presenter {
             e.printStackTrace();
         }
 
-        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),json);
-        RequestBody body2=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),sign);
-
-        Subscription subscription = commonService.getSmsCode(body,body2)
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), json);
+        Subscription subscription = commonService.getSmsCode(body, sign)
                 .subscribeOn(mSchedulerProvider.computation())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onCompleted() {
                         mSmsView.showLoadingUi(false);
+                        Log.d("SmsPresenter", "完成");
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         mSmsView.showError(e.toString());
+                        Log.d("SmsPresenter", "错误:" + e.toString());
                     }
 
                     @Override
                     public void onNext(Object s) {
                         mSmsView.success(s.toString());
+                        Log.d("SmsPresenter", "成功");
                     }
                 });
 
@@ -118,7 +120,7 @@ public class SmsPresenter implements SmsContract.Presenter {
     @Override
     public void unsubscribe() {
         mSubscriptions.clear();
-        context=null;
+        context = null;
     }
 
 }
